@@ -29,7 +29,7 @@ let loadInocar = () => {
     let URL = URL_proxy + 'https://www.inocar.mil.ec/mareas/consultan.php';
 
     fetch(URL)
-           .then(response => response.text())
+          .then(response => response.text())
           .then(data => {
              const parser = new DOMParser();
              const xml = parser.parseFromString(data, "text/html");
@@ -50,7 +50,7 @@ let loadInocar = () => {
           .then(response => response.json())
           .then(data => {
             load(data)
-            loadInocar();
+            
             localStorage.setItem("meteo", JSON.stringify(data))
             
           })
@@ -58,5 +58,6 @@ let loadInocar = () => {
         } else {
             load(JSON.parse(meteo))
         }
+        loadInocar();
     }
   )();
